@@ -6,6 +6,11 @@ public class BancAccount {
     private int balance;
     private int accountNumber;
 
+    //default constructor automatically added by the compiler if you do not make yourself
+    public BancAccount() {
+
+    }
+
     public String getAccountName() {
         return accountName;
     }
