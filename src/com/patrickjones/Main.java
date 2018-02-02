@@ -18,5 +18,12 @@ public class Main {
         int ryanAccountId = 2;
         ryan.setAccountNumber(ryanAccountId);
 
+        System.out.println(patrick);
+        System.out.println(ryan);
+
+    //use the transfer manager to transfer $50 from patrick to ryan
+        System.out.println(patrick);
+        System.out.println(ryan);
+
     }
 }
