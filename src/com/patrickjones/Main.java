@@ -21,24 +21,30 @@ public class Main {
         int ryanAccountId = 2;
         ryan.setAccountNumber(ryanAccountId);
 
-        //use the transfer manager to transfer $50 from patrick to ryan
+        System.out.println(patrick);
+        System.out.println(ryan);
+
+
+        //use the transfer manager to transfer $60 from patrick to ryan
 
         // steps:
 
         // 1. Create a new instance of the TransferManager class
 
-        // 2. call the `transfer` method of the instance you created in step 1,
-        // passing in your variables patricksAccount, ryansAccount
-        // and the amount you want to transfer
+        TransferManager myTransferManager = new TransferManager( );//this creates a new object myTransferManager
+        myTransferManager.transfer(patrick, ryan, 60);//new object.calling trransfer method on
+        // mytransferManager variable
+        //mytransfermanager is an instance og the transfer manager class
 
         System.out.println(patrick);
         System.out.println(ryan);
 
+        // 2. call the `transfer` method of the instance you created in step 1,
+        // passing in your variables patricksAccount, ryansAccount
+        // and the amount you want to transfer
 
-        TransferManager myTransferManager = new TransferManager( );//this creates a new object myTransferManager
-            myTransferManager.transfer(60);
-            myTransferManager.getTransfer();
-            System.out.println();
+
+
 
     }
 }

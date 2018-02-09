@@ -10,44 +10,38 @@ package com.patrickjones.services;
 //instance method - Any method that is invoked with respect to an instance of a class.
 // Also called simply a method. See also class method.
 
-public class TransferManager {                                                     //class
+import com.patrickjones.models.BancAccount;
 
-    int process;
-    //instance, instance variable, or object, which could be a characteristic or action
+public class TransferManager {
 
-    public void transfer(/*BancAccount accountToDebit, BancAccount accountToCredit,*/
-            int amountToTransfer) {     //constructor or instance method with 3 parameters
-        process = amountToTransfer;
-        }
 
-        public int getTransfer(){
-            System.out.println("The amount to transfer is " + process);
-        return process;
-        }
+    public void transfer(BancAccount accountToDebit, BancAccount accountToCredit, int amountToTransfer) {
 
-}
 
-// steps:
+        // steps:
 
-// 1. Create a new instance of the TransferManager class (instance and object may be the same?)
-
-// 2. call the `transfer` method of the instance you created in step 1,
-// passing in your variables patricksAccount, ryansAccount
-// and the amount you want to transfer
 
 // 1. get the current balance of the accountToDebit
+        int accountToDebitBalance = accountToDebit.getBalance();
+        System.out.println(accountToDebitBalance);
 
 // 2. subtract the amountToTransfer from the current balance of accountToDebit
+        int accountToDebitUpdatedBalance = accountToDebitBalance - amountToTransfer;
 
 // 3. update the balance of the accountToDebit with the new balance you calculated
 // in step 2 using the setBalance method
+        accountToDebit.setBalance(accountToDebitUpdatedBalance);
 
 // 4. get the current balance of the accountToCredit
+        int accountToCreditBalance = accountToCredit.getBalance();
+        System.out.println(accountToCreditBalance);
 
 // 5. increase the balance of accountToCredit by amountToTransfer
+        int accountToCreditUpdatedBalance = accountToCreditBalance + amountToTransfer;
 
 // 6. set the updated balance of accountToCredit to the value you calculated in
 // step 5 by using the setBalance method
+        accountToCredit.setBalance(accountToCreditUpdatedBalance);
 
 //homework to complete this method, the logic to transfer money, addition / subtraction.
 //use the transfer manager to transfer $60 from patrick to ryan
@@ -58,3 +52,7 @@ what are the problems?
 - create variables and method logic
 - the parameters; how to identify, the int is already there for one, but the others?
 */
+    }
+
+}
+

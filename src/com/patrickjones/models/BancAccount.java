@@ -2,12 +2,13 @@ package com.patrickjones.models;
 
 public class BancAccount {
 
+    //instance variables, every instance of bancaccount
     private String accountName;
     private int balance;
     private int accountNumber;
 
     //default constructor automatically added by the compiler if you do not make yourself
-    public BancAccount() {
+    public BancAccount() { //no return type type means constructor
 
     }
 
@@ -19,12 +20,12 @@ public class BancAccount {
         this.accountName = accountName;
     }
 
-    public int getBalance() {
+    public int getBalance() {           //method
         return balance;
     }
 
     public void setBalance(int balance) {
-        this.balance = balance;
+        this.balance = balance;  //this means patrick or ryan
     }
 
     public int getAccountNumber() {
