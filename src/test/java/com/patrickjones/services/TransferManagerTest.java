@@ -51,14 +51,11 @@ public class TransferManagerTest {
         BancAccount acctToCreditBalance = new BancAccount();
         acctToCreditBalance.setBalance(700);
 
-        BancAccount amountToTransfer = new BancAccount();
-        amountToTransfer.setBalance(1001);
-
         TransferManager transferManager = new TransferManager();
         transferManager.transfer(acctToDebitBalance, acctToCreditBalance, 1001);
 
-        String failureMessage = "The account to debit's balance does not have enough funds to complete this transfer";
-        assertEquals(failureMessage, -1, amountToTransfer.getBalance());
+        String failureMessage = "Transfer should not take place if account to debit does not have enuff funds";
+        assertEquals(failureMessage, 1000, acctToDebitBalance.getBalance()); //result after transfer
 
     }
 
