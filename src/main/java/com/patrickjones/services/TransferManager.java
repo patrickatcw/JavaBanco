@@ -14,44 +14,35 @@ import com.patrickjones.models.BancAccount;
 
 public class TransferManager {
 
-
     public void transfer(BancAccount accountToDebit, BancAccount accountToCredit, int amountToTransfer) {
 
-
-        // steps:
-
-
-// 1. get the current balance of the accountToDebit
         int accountToDebitBalance = accountToDebit.getBalance();
-        System.out.println(accountToDebitBalance);
+        System.out.println("Account to debit balance = $" + accountToDebitBalance);
 
-// 2. subtract the amountToTransfer from the current balance of accountToDebit
+       if (accountToDebitBalance < amountToTransfer){
+
+            System.out.println("This transfer CANNOT be performed, the account balance amount of $" +
+                    accountToDebitBalance + " is less than the amount to transfer, $" + amountToTransfer + ", " +
+                    "putting your account below a $0.00 balance, " +
+                    "resulting in a penalty of $50.00.");
+
+            return;
+
+        }
+
         int accountToDebitUpdatedBalance = accountToDebitBalance - amountToTransfer;
 
-// 3. update the balance of the accountToDebit with the new balance you calculated
-// in step 2 using the setBalance method
         accountToDebit.setBalance(accountToDebitUpdatedBalance);
 
-// 4. get the current balance of the accountToCredit
         int accountToCreditBalance = accountToCredit.getBalance();
-        System.out.println(accountToCreditBalance);
+        System.out.println("Account to credit balance = $" + accountToCreditBalance);
 
-// 5. increase the balance of accountToCredit by amountToTransfer
         int accountToCreditUpdatedBalance = accountToCreditBalance + amountToTransfer;
 
-// 6. set the updated balance of accountToCredit to the value you calculated in
-// step 5 by using the setBalance method
         accountToCredit.setBalance(accountToCreditUpdatedBalance);
 
-//homework to complete this method, the logic to transfer money, addition / subtraction.
-//use the transfer manager to transfer $60 from patrick to ryan
 
-/*what do you want to do?
-create a method that transfers money from one account to another
-what are the problems?
-- create variables and method logic
-- the parameters; how to identify, the int is already there for one, but the others?
-*/
+
     }
 
 }

@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 public class TransferManagerTest {
 
-   /* @Test
+   @Test
     public void testDebitsAccountToDebitByTransferAmount() {
         BancAccount acctToDebit = new BancAccount();
         acctToDebit.setBalance(1000);
@@ -40,7 +40,6 @@ public class TransferManagerTest {
         assertEquals(failureMessage, 800, acctToCredit.getBalance());
 
     }
-*/
 
     @Test
     public void testAccountToDebitBalance() {

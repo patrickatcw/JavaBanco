@@ -3,8 +3,6 @@ package com.patrickjones;
 import com.patrickjones.models.BancAccount;
 import com.patrickjones.services.TransferManager;
 
-
-
 public class Main {
 
     public static void main(String[] args) {        //psvm then tab
@@ -31,21 +29,28 @@ public class Main {
 
         // 1. Create a new instance of the TransferManager class
 
-        TransferManager myTransferManager = new TransferManager( );//this creates a new object myTransferManager
-        myTransferManager.transfer(patrick, ryan, 60);//new object.calling trransfer method on
+       // TransferManager myTransferManager = new TransferManager( );//this creates a new object myTransferManager
+        //myTransferManager.transfer(patrick, ryan, 60);//new object.calling trransfer method on
         // mytransferManager variable
-        //mytransfermanager is an instance og the transfer manager class
+        //mytransfermanager is an instance of the transfer manager class
 
-        System.out.println(patrick);
-        System.out.println(ryan);
+        //System.out.println(patrick);
+        //System.out.println(ryan);
 
         // 2. call the `transfer` method of the instance you created in step 1,
         // passing in your variables patricksAccount, ryansAccount
         // and the amount you want to transfer
 
+        TransferManager mytransferManagerTest = new TransferManager();
+        mytransferManagerTest.transfer(patrick, ryan, 1001);
 
+        //TransferManager myTransferManager = new TransferManager( );//this creates a new object myTransferManager
+        //myTransferManager.transfer(patrick, ryan, 1001);//new object.calling trransfer method on
 
-
+        System.out.println(patrick);
+        System.out.println(ryan);
+        //need to prevent balance from updating if transfer
+        //not done
     }
 }
 
