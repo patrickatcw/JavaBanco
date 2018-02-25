@@ -49,8 +49,8 @@ public class Main {
 
         System.out.println(patrick);
         System.out.println(ryan);
-        //need to prevent balance from updating if transfer
-        //not done
+
+
     }
 }
 
