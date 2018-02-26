@@ -41,8 +41,6 @@ public class TransferManager {
 
         accountToCredit.setBalance(accountToCreditUpdatedBalance);
 
-
-
     }
 
 }

@@ -10,14 +10,14 @@ public class GsonPrinter {
 
     public static void main(String[] args) {
 
-        BancAccount ryan = Object();
+        BancAccount ryan = createBankAccount() ;
         Gson gson = new Gson();
         String json = gson.toJson(ryan);
         System.out.println(json);
 
     }
 
-    private static BancAccount Object() {
+    private static BancAccount createBankAccount() {
 
         BancAccount ryan = new BancAccount();
         ryan.setAccountName("Ryan's Account");

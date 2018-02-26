@@ -45,7 +45,7 @@ public class Main {
         mytransferManagerTest.transfer(patrick, ryan, 1001);
 
         //TransferManager myTransferManager = new TransferManager( );//this creates a new object myTransferManager
-        //myTransferManager.transfer(patrick, ryan, 1001);//new object.calling trransfer method on
+        //myTransferManager.transfer(patrick, ryan, 1001);//new object.calling transfer method on
 
         System.out.println(patrick);
         System.out.println(ryan);
