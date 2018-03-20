@@ -6,36 +6,43 @@ package com.patrickjones;
 import com.google.gson.Gson;
 import com.patrickjones.models.BancAccount;
 
-import java.util.Collections;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GsonPrinter {
 
     public static void main(String[] args) {
 
-        List<BancAccount> ryan = createBankAccount();
         List<BancAccount> patrick = createBankAccount();
         Gson gson = new Gson();
-        Gson gson1 = new Gson();
-        String json = gson.toJson(ryan);
-        String json1 = gson1.toJson(patrick);
+        String json = gson.toJson(patrick);
         System.out.println(json);
-        System.out.println(json1);
+
+        try {
+
+            String filename = "accountsFile.txt";
+            String workingDirectory = System.getProperty("user.dir");
+
+            File file = new File(workingDirectory, filename);
+
+            System.out.println("Final filepath : " + file.getAbsolutePath());
+            if (file.createNewFile()) {
+                System.out.println("File is created!");
+            } else {
+                System.out.println("File is already existed!");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    //need to return mult. bank accounts, so a list
-    /*private static BancAccount createBankAccount() {    //List<BancAcoount>
-
-        BancAccount ryan = new BancAccount();
-        ryan.setAccountName("Ryan's Account");
-        ryan.setBalance(10_000);
-        ryan.setAccountNumber(2);
-
-        return ryan;
-    }*/
-
     private static List<BancAccount> createBankAccount() {
+
+        List<BancAccount> accountList = new ArrayList<>();
 
         BancAccount patrick = new BancAccount();
         patrick.setAccountName("Patrick's Account");
@@ -47,15 +54,18 @@ public class GsonPrinter {
         ryan.setBalance(10_000);
         ryan.setAccountNumber(2);
 
-        return Collections.singletonList(patrick);
-        //return Collections.singletonList(ryan);
-        //when the above is not comment out, getting error;
-        //java:unreachable statement
+        accountList.add(patrick);
+        accountList.add(ryan);
+
+        return accountList;
+
     }
+
 
 }
 
-/*print result;
-{"accountName":"Ryan\u0027s Account","balance":10000,"accountNumber":2}
-*/
+
+
+
+
 
