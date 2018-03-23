@@ -8,12 +8,15 @@ import com.patrickjones.models.BancAccount;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GsonPrinter {
+public abstract class GsonPrinter {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         List<BancAccount> patrick = createBankAccount();
         Gson gson = new Gson();
@@ -38,6 +41,18 @@ public class GsonPrinter {
             e.printStackTrace();
         }
 
+        byte[] jsonBytes = new byte[0];
+        Files.write(Paths.get("accountsFile.txt"), jsonBytes);
+
+        String filename = "accountsFile.txt";
+        String workingDirectory = System.getProperty("user.dir");
+
+        Path path = Paths.get(workingDirectory + "/" + filename);
+
+        jsonBytes = json.getBytes();
+
+        Files.write(path, jsonBytes);
+
     }
 
     private static List<BancAccount> createBankAccount() {
@@ -58,12 +73,18 @@ public class GsonPrinter {
         accountList.add(ryan);
 
         return accountList;
-
     }
-
 
 }
 
+
+/*
+There’s a `Files.write(Path path, byte[] data)` method that you can use to write the file.
+To get a `Path` object, you need to use the `Paths.get(String path)` method to get a path
+to the file, so you’ll need to combine `workingDirectory` and `filename`, then you’ll
+have everything you need to write to the file (remember you an convert
+a `String` to a `byte []` by using the `getBytes()` method.
+*/
 
 
 

@@ -1,5 +1,6 @@
 package com.patrickjones.models;
 
+
 public class BancAccount {
 
     //instance variables, every instance of bancaccount
