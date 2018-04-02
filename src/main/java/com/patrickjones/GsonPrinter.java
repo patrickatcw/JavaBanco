@@ -25,7 +25,7 @@ public abstract class GsonPrinter {
 
         try {
 
-            String filename = "accountsFile.txt";
+            String filename = "accountsFile.json";
             String workingDirectory = System.getProperty("user.dir");
 
             File file = new File(workingDirectory, filename);
@@ -34,25 +34,25 @@ public abstract class GsonPrinter {
             if (file.createNewFile()) {
                 System.out.println("File is created!");
             } else {
-                System.out.println("File is already existed!");
+                System.out.println("File already exists!");
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        byte[] jsonBytes = new byte[0];
-        Files.write(Paths.get("accountsFile.txt"), jsonBytes);
+        //byte[] jsonBytes = new byte[0];
+        //Files.write(Paths.get("accountsFile.json"), jsonBytes);
 
-        String filename = "accountsFile.txt";
+        String filename = "accountsFile.json";
         String workingDirectory = System.getProperty("user.dir");
 
         Path path = Paths.get(workingDirectory + "/" + filename);
 
-        jsonBytes = json.getBytes();
+        byte[] jsonBytes = json.getBytes();
 
         Files.write(path, jsonBytes);
-
+        System.out.println(path);
     }
 
     private static List<BancAccount> createBankAccount() {
@@ -85,6 +85,8 @@ to the file, so you’ll need to combine `workingDirectory` and `filename`, then
 have everything you need to write to the file (remember you an convert
 a `String` to a `byte []` by using the `getBytes()` method.
 */
+
+
 
 
 
