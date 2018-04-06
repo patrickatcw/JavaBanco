@@ -10,10 +10,10 @@ public class TransferManagerTest {
 
    @Test
     public void testDebitsAccountToDebitByTransferAmount() {
-        BancAccount acctToDebit = new BancAccount();
+       BancAccount acctToDebit = new BancAccount("Patrick's Account", "Ryan's Account");
         acctToDebit.setBalance(1000);
 
-        BancAccount acctToCredit = new BancAccount();
+       BancAccount acctToCredit = new BancAccount("Patrick's Account", "Ryan's Account");
         acctToCredit.setBalance(700);
 
         TransferManager transferManager = new TransferManager();
@@ -27,10 +27,10 @@ public class TransferManagerTest {
     public void testCreditsAccountToCreditByTransferAmount() {
         //Assert.fail("Patrick has to complete me");   test error to complete
 
-        BancAccount acctToDebit = new BancAccount();
+        BancAccount acctToDebit = new BancAccount("Patrick's Account", "Ryan's Account");
         acctToDebit.setBalance(1000);
 
-        BancAccount acctToCredit = new BancAccount();
+        BancAccount acctToCredit = new BancAccount("Patrick's Account", "Ryan's Account");
         acctToCredit.setBalance(700);
 
         TransferManager transferManager = new TransferManager();
@@ -44,10 +44,10 @@ public class TransferManagerTest {
     @Test
     public void testAccountToDebitBalance() {
 
-        BancAccount acctToDebitBalance = new BancAccount();
+        BancAccount acctToDebitBalance = new BancAccount("Patrick's Account", "Ryan's Account");
         acctToDebitBalance.setBalance(1000);
 
-        BancAccount acctToCreditBalance = new BancAccount();
+        BancAccount acctToCreditBalance = new BancAccount("Patrick's Account", "Ryan's Account");
         acctToCreditBalance.setBalance(700);
 
         TransferManager transferManager = new TransferManager();

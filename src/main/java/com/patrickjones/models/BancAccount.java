@@ -9,7 +9,7 @@ public class BancAccount {
     private int accountNumber;
 
     //default constructor automatically added by the compiler if you do not make yourself
-    public BancAccount() { //no return type type means constructor
+    public BancAccount(String s, String s1) { //no return type type means constructor
 
     }
 

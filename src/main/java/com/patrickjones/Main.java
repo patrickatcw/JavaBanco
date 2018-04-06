@@ -7,13 +7,13 @@ public class Main {
 
     public static void main(String[] args) {        //psvm then tab
 
-        BancAccount patrick = new BancAccount();    //new object, creating an instance of the class BancAccount
+        BancAccount patrick = new BancAccount("Patrick's Account", "Ryan's Account");    //new object, creating an instance of the class BancAccount
         patrick.setAccountName("Patrick's Account");
         patrick.setBalance(1_000);
         int patrickAccountId = 1;
         patrick.setAccountNumber(patrickAccountId);
 
-        BancAccount ryan = new BancAccount();
+        BancAccount ryan = new BancAccount("Patrick's Account", "Ryan's Account");
         ryan.setAccountName("Ryan's Account");
         ryan.setBalance(10_000);
         int ryanAccountId = 2;

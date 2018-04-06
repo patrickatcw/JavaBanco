@@ -59,12 +59,12 @@ public abstract class GsonPrinter {
 
         List<BancAccount> accountList = new ArrayList<>();
 
-        BancAccount patrick = new BancAccount();
+        BancAccount patrick = new BancAccount("Patrick's Account", "Ryan's Account");
         patrick.setAccountName("Patrick's Account");
         patrick.setBalance(1_000);
         patrick.setAccountNumber(1);
 
-        BancAccount ryan = new BancAccount();
+        BancAccount ryan = new BancAccount("Patrick's Account", "Ryan's Account");
         ryan.setAccountName("Ryan's Account");
         ryan.setBalance(10_000);
         ryan.setAccountNumber(2);
