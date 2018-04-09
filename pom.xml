@@ -46,6 +46,13 @@
             <version>2.8.2</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- Java Database Connectivity mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.46</version>
+        </dependency>
     </dependencies>
 
 </project>
