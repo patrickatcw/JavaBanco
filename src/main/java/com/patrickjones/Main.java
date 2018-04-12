@@ -5,7 +5,7 @@ import com.patrickjones.services.TransferManager;
 
 public class Main {
 
-    public static void main(String[] args) {        //psvm then tab
+    public static void main(String[] args) throws Exception {        //psvm then tab
 
         BancAccount patrick = new BancAccount("Patrick's Account", "Ryan's Account");    //new object, creating an instance of the class BancAccount
         patrick.setAccountName("Patrick's Account");
@@ -50,6 +50,10 @@ public class Main {
         System.out.println(patrick);
         System.out.println(ryan);
 
+        System.out.println("----------------------------------------");
+
+        SQLConnect dao = new SQLConnect();
+        dao.readDataBase();
 
     }
 }
