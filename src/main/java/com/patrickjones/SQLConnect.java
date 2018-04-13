@@ -8,9 +8,8 @@ public class SQLConnect {
     private Statement statement = null;
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
-    private String account_name;
 
-    public void readDataBase() throws Exception {
+    public void readDataBase() {
         try {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.jdbc.Driver");
@@ -31,7 +30,8 @@ public class SQLConnect {
             writeMetaData(resultSet);
 
         } catch (Exception e) {
-            throw e;
+            //trying from ryan viewing this
+            throw new RuntimeException("Problem querying database", e);
         } finally {
             close();
         }
@@ -60,7 +60,7 @@ public class SQLConnect {
 
             String comment = resultSet.getString("account_name");
 
-            System.out.println("Account Name: " + account_name);
+            System.out.println("Account Name: " + comment);
         }
     }
 
