@@ -50,6 +50,10 @@ public class Main {
         System.out.println(patrick);
         System.out.println(ryan);
 
+        System.out.println("----------------------------------------");
+
+        SQLConnect dao = new SQLConnect();
+        dao.readDataBase();
 
     }
 }
