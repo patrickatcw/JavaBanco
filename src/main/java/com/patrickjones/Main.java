@@ -1,6 +1,7 @@
 package com.patrickjones;
 
 import com.patrickjones.models.BancAccount;
+import com.patrickjones.services.AskCustomer;
 import com.patrickjones.services.TransferManager;
 
 public class Main {
@@ -52,8 +53,13 @@ public class Main {
 
         System.out.println("----------------------------------------");
 
-        SQLConnect dao = new SQLConnect();
+        BankAccountDAO dao = new BankAccountDAO();
         dao.readDataBase();
+
+        System.out.println("============================================");
+
+        AskCustomer askCustomer = new AskCustomer();
+        askCustomer.ask();
 
     }
 }
