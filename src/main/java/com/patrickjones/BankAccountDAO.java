@@ -2,14 +2,45 @@ package com.patrickjones;
 
 import java.sql.*;
 
-public class SQLConnect {
+public class BankAccountDAO {
 
-    private Connection connect = null;
-    private Statement statement = null;
-    private PreparedStatement preparedStatement = null;
-    private ResultSet resultSet = null;
+    public boolean isValidAccountNumber(int accountNumber) {
+
+        Connection connect = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/javabanco?autoReconnect=" +
+                    "true&useSSL=false", "gweedo", "gweedopw");
+
+            statement = connect.createStatement();
+
+            resultSet = statement
+                    .executeQuery("select count(*) as num_accounts from bank_account where account_number = \"" + accountNumber + "\"");
+
+            int count = 0;
+            while (resultSet.next()) {
+                count = resultSet.getInt("num_accounts");
+            }
+
+            return count > 0;
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 
     public void readDataBase() {
+
+        Connection connect = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+
         try {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.jdbc.Driver");
@@ -33,12 +64,12 @@ public class SQLConnect {
             //trying from ryan viewing this
             throw new RuntimeException("Problem querying database", e);
         } finally {
-            close();
+            // close();
         }
 
     }
 
-    private void writeMetaData(ResultSet resultSet) throws SQLException {
+    private static void writeMetaData(ResultSet resultSet) throws SQLException {
         //  Now get some metadata from the database
         // Result set get the result of the SQL query
 
@@ -51,37 +82,41 @@ public class SQLConnect {
         }
     }
 
-    private void writeResultSet(ResultSet resultSet) throws SQLException {
+    private static void writeResultSet(ResultSet resultSet) throws SQLException {
         // ResultSet is initially before the first data set
         while (resultSet.next()) {
             // It is possible to get the columns via name
             // also possible to get the columns via the column number
-            // which starts at 1, e.g. resultSet.getSTring(2);
+            // which starts at 1, e.g. resultSet.getString(2);
 
             String comment = resultSet.getString("account_name");
-
             System.out.println("Account Name: " + comment);
-        }
-    }
 
-    // You need to close the resultSet
-    private void close() {
-        try {
-            if (resultSet!=null) {
-                resultSet.close();
-            }
-
-            if (statement!=null) {
-                statement.close();
-            }
-
-            if (connect!=null) {
-                connect.close();
-            }
-        } catch (Exception e) {
+            //added for askcustomer
+            String comment2 = resultSet.getString("account_number");
+            System.out.println("Account Number: " + comment2);
 
         }
     }
+
+//    // You need to close the resultSet
+//    private void close() {
+//        try {
+//            if (resultSet!=null) {
+//                resultSet.close();
+//            }
+//
+//            if (statement!=null) {
+//                statement.close();
+//            }
+//
+//            if (connect!=null) {
+//                connect.close();
+//            }
+//        } catch (Exception e) {
+//
+//        }
+//    }
 
 
 }
