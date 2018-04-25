@@ -1,0 +1,1 @@
+SELECT * FROM javabanco.bank_account;

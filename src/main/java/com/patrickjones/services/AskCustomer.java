@@ -13,6 +13,9 @@ After you do the update, print out a message confirming that the update succeede
 
 import com.patrickjones.BankAccountDAO;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class AskCustomer {
@@ -28,7 +31,6 @@ public class AskCustomer {
             System.out.println("What is the bank account number?");
             int input = Integer.parseInt(userInputScanner.nextLine());
 
-            //need to create logic to compare by looping through result set for account_number here
             BankAccountDAO dao = new BankAccountDAO();
 
             try {
@@ -42,14 +44,43 @@ public class AskCustomer {
                 System.out.println("The account number " + acctNumb + " does not exist");
             }
 
-        }
+            System.out.print("What is the amount you would like to deposit? $");
+            double input$ = Double.parseDouble(userInputScanner.nextLine());
 
-        System.out.print("What is the amount in the bank account? $");
-        double input = Double.parseDouble(userInputScanner.nextLine());
-
-
+       /* }
     }
 
+        public void update(){*/
+
+            Connection connect = null;
+            Statement statement = null;
+
+            try {
+
+                connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/javabanco?autoReconnect=" +
+                        "true&useSSL=false", "gweedo", "gweedopw");
+
+                statement = connect.createStatement();
+
+                String sql = "update javabanco.bank_account "
+                        + " set balance = " + input$
+                        + " where account_number = " + acctNumb;
+
+                statement.execute(sql);
+
+                System.out.println("The amount of $" + input$ + " has been deposited to account " + acctNumb);
+
+            } catch (Exception exc) {
+                exc.printStackTrace();
+            }
+
+        }
+
+    }
 }
+
+
+
+
 
 

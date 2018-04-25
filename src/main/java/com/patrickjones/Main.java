@@ -13,11 +13,9 @@ public class Main {
 }
 
 //results
-    /*What is the bank account number?
-        4
-        What is the amount in the bank account? $50*/
-
-    /*What is the bank account number?
-        22
-        The account number 22 does not exist
-        What is the bank account number?*/
+    /*
+    What is the bank account number?
+    4
+    What is the amount you would like to deposit? $589.16
+    The amount of $589.16 has been deposited to account 4
+    */
