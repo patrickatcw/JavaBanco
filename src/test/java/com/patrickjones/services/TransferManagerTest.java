@@ -20,7 +20,7 @@ public class TransferManagerTest {
         transferManager.transfer(acctToDebit, acctToCredit, 100);
 
         String failureMessage = "The account to debit's balance should be reduced by the amount to transfer";
-       assertEquals(failureMessage, 909, acctToDebit.getBalance());
+       assertEquals(failureMessage, 900, acctToDebit.getBalance());
     }
 
     @Test
