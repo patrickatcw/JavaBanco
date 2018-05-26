@@ -12,7 +12,7 @@ public class GreetingController {
 
     @GetMapping("/greeting")
     public String greeting(@RequestParam(name = "name",
-            required = false, defaultValue = "World") String name, Model model) {
+            required = false, defaultValue = "World") String name, Model model, @ModelAttribute Greeting greeting) {
         model.addAttribute("name", name);
         return "greeting";
 
@@ -20,6 +20,8 @@ public class GreetingController {
 
     @PostMapping("/greeting")
     public String greetingSubmit(@ModelAttribute Greeting greeting) {
+
+
         return "result";
     }
 
