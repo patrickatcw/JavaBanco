@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
     <title>ACCOUNT INFORMATION</title>
@@ -7,10 +8,17 @@
 </head>
 
 <body>
-<h1>Result</h1>
-<p th:text="'account number: ' + ${greeting.account number}"/>
-<p th:text="'amount: ' + ${greeting.amount}"/>
-<a href="/greeting">Submit another amount</a>
+
+<h1>Welcome to JavaBanco</h1>
+
+<h2>Account Information</h2>
+
+<p th:text="'Account Number: ' + ${greeting.accountNumber}">Account Number: 5</p>
+
+<p th:text="'Amount: ' + ${greeting.amount}">Amount: $7200</p>
+
+<a href="/greeting">Submit Another Amount</a>
+
 </body>
 
 </html>

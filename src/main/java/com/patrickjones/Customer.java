@@ -8,6 +8,7 @@ public class Customer {
     private double amount;
 
     public Customer(long accountNumber, double amount) {
+
         this.accountNumber = accountNumber;
         this.amount = amount;
     }

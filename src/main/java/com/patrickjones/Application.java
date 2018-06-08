@@ -25,12 +25,12 @@ public class Application implements CommandLineRunner {
 
         log.info("Creating tables");
 
-        jdbcTemplate.execute("DROP TABLE customers IF EXISTS");
+        jdbcTemplate.execute("DROP TABLE IF EXISTS customers");
         jdbcTemplate.execute("CREATE TABLE customers(" +
                 "account_number VARCHAR(255), amount VARCHAR(255))");
 
         // Uses JdbcTemplate's batchUpdate operation to bulk load data
-        jdbcTemplate.batchUpdate("INSERT INTO customers(account_number, amount) VALUES (?,?)");
+        jdbcTemplate.batchUpdate("INSERT INTO customers(account_number, amount) VALUES (33,1000)");
 
         log.info("Querying for customer records where account_number = '33':");
 
