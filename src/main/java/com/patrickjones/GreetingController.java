@@ -1,5 +1,6 @@
 package com.patrickjones;
 
+import com.patrickjones.models.BancAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -54,14 +55,17 @@ public class GreetingController {
 
     @GetMapping("/bank-accounts/{accountNumber}/balance")
     public String result(@PathVariable String accountNumber, Model model) {
-        //example likewriteresult set
+        //example like writeresult set
         // 6 - reload bank account
-        //make new method, return type is BankAccount(new object i make), select* from bank_account where account_number is the number
-        //that is passed to it, which is accountNumber, loop over with for loop
+        //make new method, return type is BankAccount(new object i make), select* from
+        // bank_account where account_number is the number
+        //that is passed to it, which is accountNumber, loop over with while loop
 
+        BancAccount bancAccount = bankAccountDAO.returnBankAccount(accountNumber);
         // 7 - add bankAccount to model
         //model.addAttribute, where first arg is bankAccount
-        model.addAttribute("bankAccount", "null"); //null comes from results from method call from 6
+
+        model.addAttribute("bankAccount", bancAccount);
 
         // 8 return "result"
         return "result";

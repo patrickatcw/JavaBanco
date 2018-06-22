@@ -178,5 +178,55 @@ public class BankAccountDAO {
 
     }
 
+    //step 6 method here
+    public BancAccount returnBankAccount(String accountNumber) {
+        System.out.println(accountNumber);
+
+        Connection connect = null;
+        Statement statement = null;
+
+        try {
+
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/javabanco?autoReconnect=" +
+                    "true&useSSL=false", "gweedo", "gweedopw");
+
+            statement = connect.createStatement();
+
+            //select balance from bank account where account number = account number that is being passed as arg.
+            String sql = "select * from bank_account "
+
+                    + " where account_number = '" + accountNumber +
+                    "'";
+
+            ResultSet rs = statement.executeQuery(sql);
+
+            BancAccount bancAccount = new BancAccount(null, null);
+
+            while (rs.next()) {
+
+                accountNumber = rs.getString("account_number");
+                System.out.println("Account Number: " + accountNumber);
+                //accountNumber.setAccountNumber(bankAccountName);
+                bancAccount.setAccountNumber(Integer.parseInt(accountNumber));
+
+                String accountName = rs.getString("account_name");
+                bancAccount.setAccountName(accountName);
+
+                Integer acctBalance = rs.getInt("balance");
+                bancAccount.setBalance(acctBalance);
+
+            }
+
+            return bancAccount;
+
+        } catch (SQLException exc) {
+            exc.printStackTrace();
+        }
+
+        return null;
+
+
+    }
+
 }
 
