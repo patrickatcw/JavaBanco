@@ -1,7 +1,11 @@
 package com.patrickjones;
 
+import com.patrickjones.models.BancAccount;
+import org.springframework.stereotype.Repository;
+
 import java.sql.*;
 
+@Repository
 public class BankAccountDAO {
 
     public boolean isValidAccountNumber(int accountNumber) {
@@ -84,40 +88,95 @@ public class BankAccountDAO {
 
     private static void writeResultSet(ResultSet resultSet) throws SQLException {
         // ResultSet is initially before the first data set
+        BancAccount account = new BancAccount(null, null);
         while (resultSet.next()) {
             // It is possible to get the columns via name
             // also possible to get the columns via the column number
             // which starts at 1, e.g. resultSet.getString(2);
 
-            String comment = resultSet.getString("account_name");
-            System.out.println("Account Name: " + comment);
+            String bankAccountName = resultSet.getString("account_name");
+            System.out.println("Account Name: " + bankAccountName);
+            account.setAccountName(bankAccountName);
 
             //added for askcustomer
-            String comment2 = resultSet.getString("account_number");
-            System.out.println("Account Number: " + comment2);
+            int accountNumber = resultSet.getInt("account_number");
+            account.setAccountNumber(accountNumber);
+            System.out.println("Account Number: " + accountNumber);
 
         }
     }
 
-//    // You need to close the resultSet
-//    private void close() {
-//        try {
-//            if (resultSet!=null) {
-//                resultSet.close();
-//            }
-//
-//            if (statement!=null) {
-//                statement.close();
-//            }
-//
-//            if (connect!=null) {
-//                connect.close();
-//            }
-//        } catch (Exception e) {
-//
-//        }
-//    }
+    //both obtained from accountUpdateForm object from accountUpdateForm controller that stays there,
+    // don't pass to either of the 2 new methods
+    //step 1) method to retrieve balance int account number
+    public Integer retrieveAccountBalance(int accountNumber)
 
+            throws SQLException {
+        System.out.println(accountNumber);
+
+        Connection connect = null;
+        Statement statement = null;
+
+        try {
+
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/javabanco?autoReconnect=" +
+                    "true&useSSL=false", "gweedo", "gweedopw");
+
+            statement = connect.createStatement();
+
+            //select balance from bank account where account number = account number that is being passed as arg.
+            String sql = "select balance from bank_account "
+
+                    + " where account_number = " + accountNumber;
+
+            ResultSet rs = statement.executeQuery(sql);
+
+            Integer currentBalance = null;
+            while (rs.next()) {
+                currentBalance = rs.getInt(1);
+            }
+
+            return currentBalance;
+
+        } catch (SQLException exc) {
+            exc.printStackTrace();
+        }
+
+        return null;
+
+    }
+
+    //step 2) method to update balance int new balance is argument and account number
+    public void updateDBBalance(int accountNumber, int amount)
+            throws SQLException {
+        System.out.println(accountNumber);
+        System.out.println(amount);
+
+        Connection connect = null;
+        Statement statement = null;
+
+        try {
+
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/javabanco?autoReconnect=" +
+                    "true&useSSL=false", "gweedo", "gweedopw");
+
+            statement = connect.createStatement();
+
+            //select balance from bank account where account number = account number that is being passed as arg.
+            String sql = "update bank_account set balance = " + amount + " where account_number = '"
+                    + accountNumber + "'";
+
+            boolean updateSucceeded = statement.execute(sql);
+
+            if (!updateSucceeded) {
+                System.out.println("Update failed");
+            }
+
+        } catch (SQLException exc) {
+            exc.printStackTrace();
+        }
+
+    }
 
 }
 

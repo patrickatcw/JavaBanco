@@ -13,7 +13,7 @@
 
 <h2>Account Information</h2>
 
-<form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
+<form action="#" th:action="@{/accountUpdateForm}" th:object="${accountUpdateForm}" method="post">
     <p>Account Number: <input type="text" th:field="*{accountNumber}"/></p>
     <p>Amount: <input type="text" th:field="*{amount}"/></p>
     <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
